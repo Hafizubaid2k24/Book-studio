@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Studio - Page 2</title>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background-color: #e0f7fa; /* Halka neela background */
+        }
+        .navbar {
+            background-color: #00796b; /* Gehra neela rang */
+        }
+        .hero {
+            background-color: #004d40; /* Aur gehra neela rang */
+            color: white;
+        }
+        .book-card {
+            transition: transform 0.2s;
+        }
+        .book-card:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar text-white shadow-lg">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="text-xl font-bold">Book Studio</div>
+            <div class="space-x-6">
+                <a href="index.html" class="hover:text-gray-200">Home</a>
+                <a href="#about" class="hover:text-gray-200">About Us</a>
+                <a href="#books" class="hover:text-gray-200">Books</a>
+                <a href="#contact" class="hover:text-gray-200">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero py-16 text-center">
+        <h1 class="text-4xl font-bold mb-4">Book Studio mein khush aamdeed</h1>
+        <p class="text-lg">Hamari kitabon ke collection ko explore karen aur apna ilm badhayen.</p>
+    </section>
+
+    <!-- Books Section (Page 2) -->
+    <section id="books" class="py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-8">Mazeed Kitaben</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+                <!-- Book Card 5 -->
+                <div class="book-card bg-white rounded-lg shadow-md p-4">
+                    <h3 class="text-xl font-bold">Revive Your Heart</h3>
+                    <p class="text-gray-600">A journey to reconnect with Allah and find spiritual peace.</p>
+                    <a href="#revive-heart" onclick="showBookDetail('revive-heart')" class="text-blue-500 hover:underline">Tafseelat Dekhen</a>
+                </div>
+                <!-- Book Card 6 -->
+                <div class="book-card bg-white rounded-lg shadow-md p-4">
+                    <h3 class="text-xl font-bold">Secrets of Divine Love</h3>
+                    <p class="text-gray-600">A spiritual guide to connecting with the heart of Islam.</p>
+                    <a href="#divine-love" onclick="showBookDetail('divine-love')" class="text-blue-500 hover:underline">Tafseelat Dekhen</a>
+                </div>
+                <!-- Book Card 7 -->
+                <div class="book-card bg-white rounded-lg shadow-md p-4">
+                    <h3 class="text-xl font-bold">The Productive Muslim</h3>
+                    <p class="text-gray-600">Practical guidance on how to be productive spiritually and physically.</p>
+                    <a href="#productive-muslim" onclick="showBookDetail('productive-muslim')" class="text-blue-500 hover:underline">Tafseelat Dekhen</a>
+                </div>
+                <!-- Book Card 8 -->
+                <div class="book-card bg-white rounded-lg shadow-md p-4">
+                    <h3 class="text-xl font-bold">Don't Be Sad</h3>
+                    <p class="text-gray-600">A book filled with spiritual advice and guidance to overcome sadness.</p>
+                    <a href="#dont-be-sad" onclick="showBookDetail('dont-be-sad')" class="text-blue-500 hover:underline">Tafseelat Dekhen</a>
+                </div>
+            </div>
+            <!-- Page Navigation Links -->
+            <div class="mt-8 text-center flex justify-center space-x-4">
+                <a href="index.html" class="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700">Previous Page</a>
+                <a href="page3.html" class="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700">Next Page</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Detailed Book Sections (Shuru mein hidden) -->
+
+    <!-- Book 5: Revive Your Heart -->
+    <section id="revive-heart" class="hidden py-16">
+        <div class="container mx-auto px-4 max-w-4xl">
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                <div class="md:flex">
+                    <div class="md:w-1/3 p-6">
+                        <img src="https://i.ibb.co/68XwR7x/revive-your-heart.jpg" alt="Revive Your Heart Book Cover" class="w-full rounded-lg shadow-md">
+                    </div>
+                    <div class="md:w-2/3 p-6">
+                        <h2 class="text-3xl font-bold mb-4">Revive Your Heart</h2>
+                        <div class="flex items-center mb-4">
+                            <span class="text-yellow-400">★★★★★</span>
+                            <span class="text-gray-600 ml-2">(4.8/5)</span>
+                        </div>
+                        <p class="text-lg mb-4">Allah se phir se milne aur ruhani sukoon paane ka safar.</p>
+                        <div class="space-y-3 mb-6">
+                            <p><strong>Musannif (Author):</strong> Nouman Ali Khan</p>
+                            <p><strong>Safhaat (Pages):</strong> 224</p>
+                            <p><strong>Qeemat (Price):</strong> $17.50</p>
+                            <p><strong>Level:</strong> Tamam levels</p>
+                        </div>
+                        <button class="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700">Abhi Khareedein</button>
+                        <a href="#books" class="ml-4 text-blue-600 hover:underline" onclick="hideBookDetail('revive-heart')">Kitabon par wapas jayen</a>
+                    </div>
+                </div>
+                <div class="p-6 border-t">
+                    <h3 class="text-xl font-bold mb-3">Kitab ki Tafseel</h3>
+                    <p class="text-gray-700">Nouman Ali Khan ki ye kitab un logon ke liye hai jo Allah se apne rishte ko mazboot karna chahte hain. Is mein Quran ki roshni mein ruhani bimariyon aur unke ilaj ke bare mein bataya gaya hai, taki insaan apne dil ko taza kar sake.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Book 6: Secrets of Divine Love -->
+    <section id="divine-love" class="hidden py-16">
+        <div class="container mx-auto px-4 max-w-4xl">
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                <div class="md:flex">
+                    <div class="md:w-1/3 p-6">
+                        <img src="https://i.ibb.co/6P6Xy7p/secrets-of-divine-love.jpg" alt="Secrets of Divine Love Book Cover" class="w-full rounded-lg shadow-md">
+                    </div>
+                    <div class="md:w-2/3 p-6">
+                        <h2 class="text-3xl font-bold mb-4">Secrets of Divine Love</h2>
+                        <div class="flex items-center mb-4">
+                            <span class="text-yellow-400">★★★★★</span>
+                            <span class="text-gray-600 ml-2">(5.0/5)</span>
+                        </div>
+                        <p class="text-lg mb-4">Islam ki ruhaniyat se jurne ke liye ek ahem rahnuma.</p>
+                        <div class="space-y-3 mb-6">
+                            <p><strong>Musannif (Author):</strong> A. Helwa</p>
+                            <p><strong>Safhaat (Pages):</strong> 400</p>
+                            <p><strong>Qeemat (Price):</strong> $19.00</p>
+                            <p><strong>Level:</strong> Tamam levels</p>
+                        </div>
+                        <button class="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700">Abhi Khareedein</button>
+                        <a href="#books" class="ml-4 text-blue-600 hover:underline" onclick="hideBookDetail('divine-love')">Kitabon par wapas jayen</a>
+                    </div>
+                </div>
+                <div class="p-6 border-t">
+                    <h3 class="text-xl font-bold mb-3">Kitab ki Tafseel</h3>
+                    <p class="text-gray-700">A. Helwa ki ye kitab Quran aur Sunnah ki roshni mein Allah se mohabbat aur us se jurne ke raaston par roshni dalti hai. Ye kitab na sirf naye musalmanon ke liye balki purane musalmanon ke liye bhi ruhaniyat aur sukoon paane ke liye ek zabardast rahnuma hai.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Book 7: The Productive Muslim -->
+    <section id="productive-muslim" class="hidden py-16">
+        <div class="container mx-auto px-4 max-w-4xl">
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                <div class="md:flex">
+                    <div class="md:w-1/3 p-6">
+                        <img src="https://i.ibb.co/1K74FwC/the-productive-muslim.jpg" alt="The Productive Muslim Book Cover" class="w-full rounded-lg shadow-md">
+                    </div>
+                    <div class="md:w-2/3 p-6">
+                        <h2 class="text-3xl font-bold mb-4">The Productive Muslim</h2>
+                        <div class="flex items-center mb-4">
+                            <span class="text-yellow-400">★★★★☆</span>
+                            <span class="text-gray-600 ml-2">(4.5/5)</span>
+                        </div>
+                        <p class="text-lg mb-4">Roohani aur jismaani taur par productive hone ke liye amali rahnumai.</p>
+                        <div class="space-y-3 mb-6">
+                            <p><strong>Musannif (Author):</strong> Mohammed Faris</p>
+                            <p><strong>Safhaat (Pages):</strong> 272</p>
+                            <p><strong>Qeemat (Price):</strong> $16.00</p>
+                            <p><strong>Level:</strong> Tamam levels</p>
+                        </div>
+                        <button class="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700">Abhi Khareedein</button>
+                        <a href="#books" class="ml-4 text-blue-600 hover:underline" onclick="hideBookDetail('productive-muslim')">Kitabon par wapas jayen</a>
+                    </div>
+                </div>
+                <div class="p-6 border-t">
+                    <h3 class="text-xl font-bold mb-3">Kitab ki Tafseel</h3>
+                    <p class="text-gray-700">Ye kitab Mohammed Faris ne likhi hai, jis mein musalmanon ke liye waqt ka sahih istemal aur behtar zindagi guzarne ke usool bataye gaye hain. Is mein Islam ke bunyadi usoolon ko jadeed (modern) tareeqon se jod kar pesh kiya gaya hai.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Book 8: Don't Be Sad -->
+    <section id="dont-be-sad" class="hidden py-16">
+        <div class="container mx-auto px-4 max-w-4xl">
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                <div class="md:flex">
+                    <div class="md:w-1/3 p-6">
+                        <img src="https://i.ibb.co/hK7Jq7z/dont-be-sad.jpg" alt="Don't Be Sad Book Cover" class="w-full rounded-lg shadow-md">
+                    </div>
+                    <div class="md:w-2/3 p-6">
+                        <h2 class="text-3xl font-bold mb-4">Don't Be Sad</h2>
+                        <div class="flex items-center mb-4">
+                            <span class="text-yellow-400">★★★★★</span>
+                            <span class="text-gray-600 ml-2">(4.9/5)</span>
+                        </div>
+                        <p class="text-lg mb-4">Ek aisi kitab jismein ranj-o-gham se nikalne ke liye ruhani mashware hain.</p>
+                        <div class="space-y-3 mb-6">
+                            <p><strong>Musannif (Author):</strong> Aaidh ibn Abdullah al-Qarni</p>
+                            <p><strong>Safhaat (Pages):</strong> 540</p>
+                            <p><strong>Qeemat (Price):</strong> $21.00</p>
+                            <p><strong>Level:</strong> Tamam levels</p>
+                        </div>
+                        <button class="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700">Abhi Khareedein</button>
+                        <a href="#books" class="ml-4 text-blue-600 hover:underline" onclick="hideBookDetail('dont-be-sad')">Kitabon par wapas jayen</a>
+                    </div>
+                </div>
+                <div class="p-6 border-t">
+                    <h3 class="text-xl font-bold mb-3">Kitab ki Tafseel</h3>
+                    <p class="text-gray-700">Aaidh ibn Abdullah al-Qarni ki ye mashoor kitab un logon ke liye hai jo apni zindagi mein pareshani aur udasi ka samna kar rahe hain. Quran aur Hadith ki talimat ki roshni mein, ye kitab umeed, sabr aur sukoon ki talqeen karti hai.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gradient-to-r from-teal-800 to-teal-600 text-white py-10 mt-16">
+        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
+            
+            <!-- About -->
+            <div>
+                <h3 class="text-2xl font-bold mb-3">Book Studio</h3>
+                <p class="text-gray-200 mb-4">
+                    Kitabon ke liye tumhara markaz jo ilham deti, sikhati, aur dil behlati hain.
+                    Hamare sath ilm ki duniya explore karen.
+                </p>
+                <div class="flex space-x-4 text-lg">
+                    <a href="#" class="hover:text-yellow-300"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="hover:text-yellow-300"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="hover:text-yellow-300"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="hover:text-yellow-300"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+            
+            <!-- Quick Links -->
+            <div>
+                <h4 class="text-xl font-semibold mb-3">Ahem Links</h4>
+                <ul class="space-y-2">
+                    <li><a href="home.html" class="hover:underline">Home</a></li>
+                    <li><a href="#about" class="hover:underline">About Us</a></li>
+                    <li><a href="#books" class="hover:underline">Books</a></li>
+                    <li><a href="#contact" class="hover:underline">Contact</a></li>
+                   <li> <a href="privacy-policy.html" class="hover:text-gray-200">Privacy Policy</a></li>
+                   <li> <a href="audible-disclosure.html" class="hover:text-gray-200">Audioable Disclosure</a></li>
+                </ul>
+            </div>
+            
+            <!-- Newsletter -->
+            <div>
+                <h4 class="text-xl font-semibold mb-3">Taza Tareen Malumat</h4>
+                <p class="text-gray-200 mb-3">Latest updates ke liye hamara newsletter subscribe karen.</p>
+                <form class="flex">
+                    <input type="email" placeholder="Apna email darj karen" 
+                            class="p-2 rounded-l-lg w-full text-gray-900 focus:outline-none">
+                    <button class="bg-yellow-400 hover:bg-yellow-500 text-gray-900 px-4 rounded-r-lg">
+                        Subscribe
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Bottom Bar -->
+        <div class="border-t border-gray-400 mt-8 pt-4 text-center text-sm text-gray-200">
+            <p>&copy; <span id="year"></span> Book Studio. Tamam Huqooq Mehfooz Hain.</p>
+        </div>
+    </footer>
+
+<script>
+    // Saal (year) ko automatic update karne ke liye
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Book ki tafseel dikhane aur chhupane ke liye functions
+    function showBookDetail(bookId) {
+        document.querySelectorAll('section[id]').forEach(el => {
+            if (el.id !== "books" && el.id !== bookId && el.id !== "home") {
+                el.classList.add('hidden');
+            } else if (el.id === "books") {
+                el.classList.add('hidden');
+            }
+        });
+        document.getElementById(bookId).classList.remove('hidden');
+        document.getElementById(bookId).scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function hideBookDetail(bookId) {
+        document.getElementById(bookId).classList.add('hidden');
+        document.getElementById("books").classList.remove('hidden');
+        document.getElementById("books").scrollIntoView({ behavior: 'smooth' });
+    }
+</script>
+
+</body>
+</html>
