@@ -20,34 +20,7 @@
         body {
             background-color: #e0f7fa; /* Light blue background */
         }
-        <nav class="bg-teal-700 p-4 flex justify-between items-center">
-  <a href="index.html" class="text-white font-bold text-xl">📚 Book Studio</a>
-  <div class="flex space-x-4 items-center">
-    <span id="welcomeText" class="text-white font-medium"></span>
-    <a href="login.html" id="loginBtn" class="text-white hover:underline">Login</a>
-    <a href="register.html" id="registerBtn" class="text-white hover:underline">Register</a>
-    <button onclick="logoutUser()" id="logoutBtn" class="hidden bg-white text-teal-700 px-3 py-1 rounded-lg font-semibold hover:bg-gray-100">Logout</button>
-  </div>
-</nav>
-
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
-<script>
-  const SUPABASE_URL = "https://hxsqzscxtcdmstilbnzm.supabase.co";
-  const SUPABASE_KEY = "YOUR_SUPABASE_ANON_KEY";
-  const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-  const userEmail = localStorage.getItem("userEmail");
-  if (userEmail) {
-    document.getElementById("welcomeText").textContent = "Welcome, " + userEmail;
-    document.getElementById("loginBtn").classList.add("hidden");
-    document.getElementById("registerBtn").classList.add("hidden");
-    document.getElementById("logoutBtn").classList.remove("hidden");
-  }
-  async function logoutUser() {
-    await supabaseClient.auth.signOut();
-    localStorage.removeItem("userEmail");
-    window.location.href = "login.html";
-  }
-</script>
+      
         .navbar {
             background-color: #00796b; /* Dark teal color */
         }
@@ -425,6 +398,7 @@ The book delves into various facets of 'Abbasid society to support this argument
 
 </body>
 </html>
+
 
 
 
