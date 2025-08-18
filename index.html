@@ -48,17 +48,21 @@
 <body>
 
     <!-- Navigation Bar -->
-<nav class="bg-teal-700 p-4">
+
+
+
+   <nav class="bg-teal-700 p-4">
   <div class="container mx-auto flex justify-between items-center">
+    <!-- Logo -->
     <a href="index.html" class="text-white font-bold text-xl">📚 Book Studio</a>
 
-    <!-- Hamburger for mobile -->
-    <button id="menu-btn" class="text-white text-2xl md:hidden">
+    <!-- Hamburger Button (Mobile) -->
+    <button id="menu-btn" class="text-white text-2xl md:hidden focus:outline-none">
       ☰
     </button>
 
-    <!-- Navbar Links -->
-    <div id="menu" class="hidden md:flex space-x-4 items-center">
+    <!-- Menu Links -->
+    <div id="menu" class="hidden md:flex md:space-x-4 md:items-center flex-col md:flex-row mt-2 md:mt-0">
       <a href="index.html" class="text-white hover:underline">Home</a>
       <a href="#books" class="text-white hover:underline">Books</a>
       <a href="#about" class="text-white hover:underline">About</a>
@@ -77,7 +81,7 @@
   const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh4c3F6c2N4dGNkbXN0aWxibnptIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTU0MTQxNTgsImV4cCI6MjA3MDk5MDE1OH0.QTMdxozUFDA_5gUau3w06YgSpZwRe9fGYo2Ale-jmts";
   const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-  // Check if user logged in
+  // Check login status
   const userEmail = localStorage.getItem("userEmail");
   if (userEmail) {
     document.getElementById("welcomeText").textContent = "Welcome, " + userEmail;
@@ -92,18 +96,15 @@
     window.location.href = "login.html";
   }
 
-  // Mobile Menu Toggle
+  // ✅ Mobile Menu Toggle Fix
   const menuBtn = document.getElementById("menu-btn");
   const menu = document.getElementById("menu");
 
   menuBtn.addEventListener("click", () => {
     menu.classList.toggle("hidden");
-    menu.classList.toggle("flex");
-    menu.classList.toggle("flex-col");
-    menu.classList.toggle("space-y-2");
-    menu.classList.toggle("mt-2");
   });
 </script>
+
 
 
     <!-- Hero Section -->
@@ -451,6 +452,7 @@ The book delves into various facets of 'Abbasid society to support this argument
 
 </body>
 </html>
+
 
 
 
