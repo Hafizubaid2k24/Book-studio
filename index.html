@@ -1,14 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script>
-  // Check if user is logged in
-  const userEmail = localStorage.getItem("userEmail");
-  if (!userEmail) {
-    // Redirect to login page if not logged in
-    window.location.href = "login.html";
-  }
-</script>
+    
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -50,33 +43,62 @@
     <!-- Navigation Bar -->
 
 
-
-   <nav class="bg-teal-700 p-4">
+<nav class="bg-teal-700 p-4">
   <div class="container mx-auto flex justify-between items-center">
-    <!-- Logo -->
     <a href="index.html" class="text-white font-bold text-xl">📚 Book Studio</a>
 
-    <!-- Hamburger Button (Mobile) -->
-    <button id="menu-btn" class="text-white text-2xl md:hidden focus:outline-none">
+    <!-- Hamburger icon visible on mobile only -->
+    <button id="menu-btn" class="text-white text-2xl md:hidden focus:outline-none" aria-label="Toggle Menu">
       ☰
     </button>
 
-    <!-- Menu Links -->
-    <div id="menu" class="hidden md:flex md:space-x-4 md:items-center flex-col md:flex-row mt-2 md:mt-0">
+    <!-- Links container -->
+    <div id="menu" class="hidden md:flex md:items-center md:space-x-4 flex-col md:flex-row">
       <a href="index.html" class="text-white hover:underline">Home</a>
       <a href="#books" class="text-white hover:underline">Books</a>
       <a href="#about" class="text-white hover:underline">About</a>
       <a href="#contact" class="text-white hover:underline">Contact</a>
+      <a href="privacy.html" class="text-white hover:underline">Privacy Policy</a>
+      <a href="disclosure.html" class="text-white hover:underline">Audible Disclosure</a>
+
       <span id="welcomeText" class="text-white font-medium"></span>
       <a href="register.html" id="registerBtn" class="text-white hover:underline">Register</a>
       <a href="login.html" id="loginBtn" class="text-white hover:underline">Login</a>
-      <button onclick="logoutUser()" id="logoutBtn" class="hidden bg-white text-teal-700 px-3 py-1 rounded-lg font-semibold hover:bg-gray-100">Logout</button>
+      <button onclick="logoutUser()" id="logoutBtn" class="hidden bg-white text-teal-700 px-3 py-1 rounded-lg hover:bg-gray-100 font-semibold">
+        Logout
+      </button>
     </div>
   </div>
 </nav>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 <script>
+  const SUPABASE_URL = "https://hxsqzscxtcdmstilbnzm.supabase.co";
+  const SUPABASE_KEY = "YOUR_SUPABASE_ANON_KEY";
+  const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+  // Show/hide login/logout based on user state
+  const userEmail = localStorage.getItem("userEmail");
+  if (userEmail) {
+    document.getElementById("welcomeText").textContent = "Welcome, " + userEmail;
+    document.getElementById("loginBtn").classList.add("hidden");
+    document.getElementById("registerBtn").classList.add("hidden");
+    document.getElementById("logoutBtn").classList.remove("hidden");
+  }
+
+  async function logoutUser() {
+    await supabase.auth.signOut();
+    localStorage.removeItem("userEmail");
+    window.location.href = "login.html";
+  }
+
+  // Mobile menu toggle
+  document.getElementById("menu-btn").addEventListener("click", function() {
+    const menu = document.getElementById("menu");
+    menu.classList.toggle("hidden");
+  });
+</script>
+
   const SUPABASE_URL = "https://hxsqzscxtcdmstilbnzm.supabase.co";
   const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh4c3F6c2N4dGNkbXN0aWxibnptIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTU0MTQxNTgsImV4cCI6MjA3MDk5MDE1OH0.QTMdxozUFDA_5gUau3w06YgSpZwRe9fGYo2Ale-jmts";
   const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
@@ -452,6 +474,7 @@ The book delves into various facets of 'Abbasid society to support this argument
 
 </body>
 </html>
+
 
 
 
