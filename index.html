@@ -1,521 +1,381 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book Studio - Home</title>
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Book Studio - Home</title>
-      <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YKV4N73P6F"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-YKV4N73P6F');
-    </script>
-    <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        body {
-            background-color: #e0f7fa; /* Light blue background */
-        }
-      
-        .navbar {
-            background-color: #00796b; /* Dark teal color */
-        }
-        .hero {
-            background-color: #004d40; /* Even darker teal color */
-            color: white;
-        }
-        .book-card {
-            transition: transform 0.2s;
-        }
-        .book-card:hover {
-            transform: scale(1.05);
-        }
-    </style>
+  <meta name="description" content="Book Studio — explore inspiring Islamic books with clean summaries, details, and audio options." />
+  <link rel="canonical" href="https://hafizubaid2k24.github.io/Book-studio/" />
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-YKV4N73P6F"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-YKV4N73P6F');
+  </script>
+
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    body { background-color: #e0f7fa; }
+    .hero { background-color: #004d40; color: #fff; }
+    .book-card { transition: transform .2s; }
+    .book-card:hover { transform: scale(1.05); }
+  </style>
 </head>
-<body>
+<body class="min-h-screen flex flex-col">
 
+  <!-- NAVBAR -->
   <nav class="bg-teal-700 p-4">
-  <div class="container mx-auto flex justify-between items-center">
-    <a href="index.html" class="text-white font-bold text-xl">📚 Book Studio</a>
+    <div class="container mx-auto flex justify-between items-center">
+      <a href="index.html" class="text-white font-bold text-xl">📚 Book Studio</a>
 
-    <!-- Hamburger icon visible on mobile only -->
-    <button id="menu-btn" class="text-white text-2xl md:hidden focus:outline-none" aria-label="Toggle Menu">
-      ☰
-    </button>
+      <!-- Hamburger (mobile) -->
+      <button id="menu-btn" class="text-white text-2xl md:hidden focus:outline-none" aria-label="Toggle Menu" aria-controls="menu" aria-expanded="false">☰</button>
 
-    <!-- Links container -->
-    <div id="menu" class="hidden md:flex md:items-center md:space-x-4 flex-col md:flex-row">
-      <a href="index.html" class="text-white hover:underline">Home</a>
-      <a href="#books" class="text-white hover:underline">Books</a>
-      <a href="#about" class="text-white hover:underline">About</a>
-      <a href="#contact" class="text-white hover:underline">Contact</a>
-      <a href="privacy.html" class="text-white hover:underline">Privacy Policy</a>
-      <a href="disclosure.html" class="text-white hover:underline">Audible Disclosure</a>
+      <!-- Links -->
+      <div id="menu" class="hidden md:flex md:items-center md:space-x-4 flex-col md:flex-row">
+        <a href="index.html" class="text-white hover:underline">Home</a>
+        <a href="#books" class="text-white hover:underline">Books</a>
+        <a href="about-us.html" class="text-white hover:underline">About</a>
+        <a href="contact-us.html" class="text-white hover:underline">Contact</a>
+        <a href="privacy-policy.html" class="text-white hover:underline">Privacy Policy</a>
+        <a href="audible-disclosure.html" class="text-white hover:underline">Audible Disclosure</a>
 
-      <span id="welcomeText" class="text-white font-medium"></span>
-      <a href="register.html" id="registerBtn" class="text-white hover:underline">Register</a>
-      <a href="login.html" id="loginBtn" class="text-white hover:underline">Login</a>
-      <button onclick="logoutUser()" id="logoutBtn" class="hidden bg-white text-teal-700 px-3 py-1 rounded-lg hover:bg-gray-100 font-semibold">
-        Logout
-      </button>
+        <span id="welcomeText" class="text-white font-medium"></span>
+        <a href="register.html" id="registerBtn" class="text-white hover:underline">Register</a>
+        <a href="login.html" id="loginBtn" class="text-white hover:underline">Login</a>
+        <button id="logoutBtn" class="hidden bg-white text-teal-700 px-3 py-1 rounded-lg hover:bg-gray-100 font-semibold">
+          Logout
+        </button>
+      </div>
     </div>
-  </div>
-</nav>
+  </nav>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script>
-  const SUPABASE_URL = "https://hxsqzscxtcdmstilbnzm.supabase.co";
-  const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh4c3F6c2N4dGNkbXN0aWxibnptIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTU0MTQxNTgsImV4cCI6MjA3MDk5MDE1OH0.QTMdxozUFDA_5gUau3w06YgSpZwRe9fGYo2Ale-jmts"; // 👈 apna anon key
+  <!-- HERO -->
+  <section class="hero py-16 text-center">
+    <h1 class="text-4xl font-bold mb-4">Welcome to Book Studio</h1>
+    <p class="text-lg">Explore our collection of books and increase your knowledge.</p>
+  </section>
 
-  const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+  <!-- BOOKS -->
+  <section id="books" class="py-16">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-8">Our Books</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+        <!-- Book 1 -->
+        <div class="book-card bg-white rounded-lg shadow-md p-4">
+          <h3 class="text-xl font-bold">The Sealed Nectar (Ar-Raheeq al-Makhtum)</h3>
+          <p class="text-gray-600">A detailed biography of the Prophet Muhammad ﷺ.</p>
+          <a href="#sealed-nectar" onclick="showBookDetail('sealed-nectar')" class="text-blue-600 hover:underline">View Details</a>
+        </div>
 
-  // Check if user logged in
-  const userEmail = localStorage.getItem("userEmail");
-  if (userEmail) {
-    document.getElementById("welcomeText").textContent = "Welcome, " + userEmail;
-    document.getElementById("loginBtn").classList.add("hidden");
-    document.getElementById("registerBtn").classList.add("hidden");
-    document.getElementById("logoutBtn").classList.remove("hidden");
-  }
+        <!-- Book 2 -->
+        <div class="book-card bg-white rounded-lg shadow-md p-4">
+          <h3 class="text-xl font-bold">Muhammad: His Life Based on the Earliest Sources</h3>
+          <p class="text-gray-600">A captivating biography based on the earliest authentic sources.</p>
+          <a href="#muhammad-earliest-sources" onclick="showBookDetail('muhammad-earliest-sources')" class="text-blue-600 hover:underline">View Details</a>
+        </div>
 
-  async function logoutUser() {
-    await client.auth.signOut();
-    localStorage.removeItem("userEmail");
-    window.location.href = "login.html";
-  }
+        <!-- Book 3 -->
+        <div class="book-card bg-white rounded-lg shadow-md p-4">
+          <h3 class="text-xl font-bold">Saints and Heroes</h3>
+          <p class="text-gray-600">Stories of great Islamic figures and their achievements.</p>
+          <a href="#saints-heroes" onclick="showBookDetail('saints-heroes')" class="text-blue-600 hover:underline">View Details</a>
+        </div>
 
-  // Mobile menu toggle
-  document.getElementById("menu-btn").addEventListener("click", function() {
+        <!-- Book 4 -->
+        <div class="book-card bg-white rounded-lg shadow-md p-4">
+          <h3 class="text-xl font-bold">The Great Caliphs</h3>
+          <p class="text-gray-600">Biographies of the first four Caliphs of Islam.</p>
+          <a href="#great-caliphs" onclick="showBookDetail('great-caliphs')" class="text-blue-600 hover:underline">View Details</a>
+        </div>
+      </div>
+
+      <div class="mt-8 text-center">
+        <a href="page2.html" class="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700" role="button">Next Page</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- DETAILS: The Sealed Nectar -->
+  <section id="sealed-nectar" class="hidden py-16">
+    <div class="container mx-auto px-4 max-w-4xl">
+      <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+        <div class="md:flex">
+          <div class="md:w-1/3 p-6">
+            <img src="https://m.media-amazon.com/images/I/61jeTQiyh7L._SL500_.jpg" alt="The Sealed Nectar book cover" class="w-full rounded-lg shadow-md" />
+          </div>
+          <div class="md:w-2/3 p-6">
+            <h2 class="text-3xl font-bold mb-4">The Sealed Nectar (Ar-Raheeq al-Makhtum)</h2>
+            <div class="flex items-center mb-4" aria-label="Rating 4.5 out of 5">
+              <span class="text-yellow-400">★★★★☆</span>
+              <span class="text-gray-600 ml-2">(4.5/5)</span>
+            </div>
+            <p class="text-lg mb-4">A detailed book on the life of the Prophet Muhammad ﷺ.</p>
+            <div class="space-y-3 mb-6">
+              <p><strong>Level:</strong> Intermediate</p>
+              <h3 class="text-xl font-bold">Want to listen?</h3>
+              <p>If you want to hear the story, just click below — hear now 👇</p>
+            </div>
+            <a class="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700 inline-block"
+               href="https://www.audible.com/" target="_blank" rel="noopener" role="button">Hear now</a>
+            <a href="#books" class="ml-4 text-blue-600 hover:underline" onclick="hideBookDetail('sealed-nectar')">Go back to books</a>
+          </div>
+        </div>
+        <div class="p-6 border-t">
+          <h3 class="text-xl font-bold mb-3">Book Details</h3>
+          <h4 class="text-lg font-semibold">By Safi-ur-Rahman al-Mubarakpuri</h4>
+          <p class="text-gray-700 mt-3">
+            <strong>The Sealed Nectar</strong> is one of the most acclaimed and authentic biographies of the Prophet Muhammad ﷺ. It covers his life, mission, struggles, and timeless lessons that continue to inspire millions.
+          </p>
+          <h5 class="font-semibold mt-4">Introduction</h5>
+          <p class="text-gray-700">The book opens with Arabia’s pre-Islamic background, describing its social, political, and religious conditions, and why the Prophet’s mission was a turning point in history.</p>
+          <h5 class="font-semibold mt-4">Early Life</h5>
+          <p class="text-gray-700">It traces the Prophet’s ﷺ noble lineage, birth in Makkah, and early life as an orphan, highlighting the character that earned him the title <em>Al‑Ameen</em> (The Trustworthy).</p>
+          <h5 class="font-semibold mt-4">Revelation & Makkah</h5>
+          <p class="text-gray-700">From the first revelation in Hira to years of opposition in Makkah, the narrative shows steadfastness and the companions’ sacrifices.</p>
+          <h5 class="font-semibold mt-4">Hijrah & Madinah</h5>
+          <p class="text-gray-700">The Hijrah, state-building in Madinah, key battles, diplomacy like Hudaybiyyah, and the Conquest of Makkah are covered with balance and depth.</p>
+          <h5 class="font-semibold mt-4">Conclusion</h5>
+          <p class="text-gray-700">More than a biography, it is a guide to values of patience, mercy, justice, and devotion to God.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DETAILS: Muhammad: His Life Based on the Earliest Sources -->
+  <section id="muhammad-earliest-sources" class="hidden py-16">
+    <div class="container mx-auto px-4 max-w-4xl">
+      <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+        <div class="md:flex">
+          <div class="md:w-1/3 p-6">
+            <img src="https://m.media-amazon.com/images/I/51qVmuUMpGL._UF1000%2C1000_QL80_.jpg" alt="Muhammad: His Life Based on the Earliest Sources cover" class="w-full rounded-lg shadow-md" />
+          </div>
+          <div class="md:w-2/3 p-6">
+            <h2 class="text-3xl font-bold mb-4">Muhammad: His Life Based on the Earliest Sources</h2>
+            <div class="flex items-center mb-4" aria-label="Rating 4.8 out of 5">
+              <span class="text-yellow-400">★★★★★</span>
+              <span class="text-gray-600 ml-2">(4.8/5)</span>
+            </div>
+            <p class="text-lg mb-4">A captivating biography of Prophet Muhammad ﷺ based on the earliest authentic sources.</p>
+            <div class="space-y-3 mb-6">
+              <p><strong>Level:</strong> Advanced</p>
+              <h3 class="text-xl font-bold">Want to listen?</h3>
+              <p>If you want to hear the story, just click below — hear now 👇</p>
+            </div>
+            <a class="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700 inline-block"
+               href="https://www.audible.com/" target="_blank" rel="noopener" role="button">Hear now</a>
+            <a href="#books" class="ml-4 text-blue-600 hover:underline" onclick="hideBookDetail('muhammad-earliest-sources')">Go back to books</a>
+          </div>
+        </div>
+        <div class="p-6 border-t">
+          <h3 class="text-xl font-bold mb-3">Book Details</h3>
+          <h4 class="text-lg font-semibold">By Martin Lings</h4>
+          <p class="text-gray-700 mt-3">Widely praised for literary elegance and reliance on early sources, presenting the Prophet’s ﷺ life with historical accuracy and spiritual insight.</p>
+          <h5 class="font-semibold mt-4">Highlights</h5>
+          <ul class="list-disc list-inside text-gray-700 space-y-1">
+            <li>Pre‑Islamic Arabia background</li>
+            <li>Early life & character (<em>Al‑Ameen</em>)</li>
+            <li>First revelation; perseverance amid persecution</li>
+            <li>Isra & Mi‘raj, Hijrah, statecraft in Madinah</li>
+            <li>Conquest of Makkah; Farewell Sermon themes</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DETAILS: Saints and Heroes -->
+  <section id="saints-heroes" class="hidden py-16">
+    <div class="container mx-auto px-4 max-w-4xl">
+      <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+        <div class="md:flex">
+          <div class="md:w-1/3 p-6">
+            <img src="https://sophiainstitute.com/wp-content/uploads/2023/02/16757372646601-21041.jpeg" alt="Saints and Heroes book cover" class="w-full rounded-lg shadow-md" />
+          </div>
+          <div class="md:w-2/3 p-6">
+            <h2 class="text-3xl font-bold mb-4">Saints and Heroes</h2>
+            <div class="flex items-center mb-4" aria-label="Rating 4.6 out of 5">
+              <span class="text-yellow-400">★★★★☆</span>
+              <span class="text-gray-600 ml-2">(4.6/5)</span>
+            </div>
+            <p class="text-lg mb-4">Stories of great figures and their achievements.</p>
+            <div class="space-y-3 mb-6">
+              <p><strong>Level:</strong> Elementary</p>
+              <h3 class="text-xl font-bold">Want to listen?</h3>
+              <p>If you want to hear the story, just click below — hear now 👇</p>
+            </div>
+            <a class="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700 inline-block"
+               href="https://www.audible.com/" target="_blank" rel="noopener" role="button">Hear now</a>
+            <a href="#books" class="ml-4 text-blue-600 hover:underline" onclick="hideBookDetail('saints-heroes')">Go back to books</a>
+          </div>
+        </div>
+        <div class="p-6 border-t">
+          <h3 class="text-xl font-bold mb-3">Book Details</h3>
+          <p class="text-gray-700">An engaging anthology that invites readers—especially young adults—to discover courage, compassion, and faith through lives across centuries.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DETAILS: The Great Caliphs -->
+  <section id="great-caliphs" class="hidden py-16">
+    <div class="container mx-auto px-4 max-w-4xl">
+      <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+        <div class="md:flex">
+          <div class="md:w-1/3 p-6">
+            <img src="https://www.libertybooks.com/image/cache/catalog/9788178987767%201-626x974.jpg?q6" alt="The Great Caliphs book cover" class="w-full rounded-lg shadow-md" />
+          </div>
+          <div class="md:w-2/3 p-6">
+            <h2 class="text-3xl font-bold mb-4">The Great Caliphs</h2>
+            <div class="flex items-center mb-4" aria-label="Rating 4.7 out of 5">
+              <span class="text-yellow-400">★★★★☆</span>
+              <span class="text-gray-600 ml-2">(4.7/5)</span>
+            </div>
+            <p class="text-lg mb-4">Insights into the lives and governance of the early Caliphs.</p>
+            <div class="space-y-3 mb-6">
+              <p><strong>Level:</strong> Intermediate</p>
+              <h3 class="text-xl font-bold">Want to listen?</h3>
+              <p>If you want to hear the story, just click below — hear now 👇</p>
+            </div>
+            <a class="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700 inline-block"
+               href="https://www.audible.com/" target="_blank" rel="noopener" role="button">Hear now</a>
+            <a href="#books" class="ml-4 text-blue-600 hover:underline" onclick="hideBookDetail('great-caliphs')">Go back to books</a>
+          </div>
+        </div>
+        <div class="p-6 border-t">
+          <h3 class="text-xl font-bold mb-3">Book Details</h3>
+          <p class="text-gray-700">A balanced look at leadership, institutions, and the intellectual flowering of the Abbasid era within the wider Mediterranean world.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-gradient-to-r from-teal-800 to-teal-600 text-white py-10 mt-16">
+    <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div>
+        <h3 class="text-2xl font-bold mb-3">Book Studio</h3>
+        <p class="text-gray-200 mb-4">Your hub for books that inspire, educate, and entertain. Explore the world of knowledge with us.</p>
+        <div class="flex space-x-4 text-lg">
+          <a href="#" class="hover:text-yellow-300" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="hover:text-yellow-300" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="hover:text-yellow-300" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="hover:text-yellow-300" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        </div>
+      </div>
+
+      <div>
+        <h4 class="text-xl font-semibold mb-3">Important Links</h4>
+        <ul class="space-y-2">
+          <li><a href="index.html" class="hover:underline">Home</a></li>
+          <li><a href="about-us.html" class="hover:underline">About Us</a></li>
+          <li><a href="#books" class="hover:underline">Books</a></li>
+          <li><a href="contact-us.html" class="hover:underline">Contact</a></li>
+          <li><a href="privacy-policy.html" class="hover:underline">Privacy Policy</a></li>
+          <li><a href="audible-disclosure.html" class="hover:underline">Audible Disclosure</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="text-xl font-semibold mb-3">Latest Information</h4>
+        <p class="text-gray-200 mb-3">Subscribe to our newsletter for the latest updates.</p>
+        <form class="flex" onsubmit="event.preventDefault(); alert('Thanks for subscribing!');">
+          <label for="newsletter-email" class="sr-only">Email</label>
+          <input id="newsletter-email" type="email" placeholder="Enter your email"
+                 class="p-2 rounded-l-lg w-full text-gray-900 focus:outline-none" required />
+          <button class="bg-yellow-400 hover:bg-yellow-500 text-gray-900 px-4 rounded-r-lg">
+            Subscribe
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <div class="border-t border-gray-400 mt-8 pt-4 text-center text-sm text-gray-200">
+      <p>&copy; <span id="year"></span> Book Studio. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script>
+    // --- Supabase (keep your anon key safe; rotate if public) ---
+    const SUPABASE_URL = "https://hxsqzscxtcdmstilbnzm.supabase.co";
+    const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh4c3F6c2N4dGNkbXN0aWxibnptIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTU0MTQxNTgsImV4cCI6MjA3MDk5MDE1OH0.QTMdxozUFDA_5gUau3w06YgSpZwRe9fGYo2Ale-jmts";
+    const sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+    // UI state from localStorage
+    const storedEmail = localStorage.getItem("userEmail");
+    const welcomeText = document.getElementById("welcomeText");
+    const loginBtn = document.getElementById("loginBtn");
+    const registerBtn = document.getElementById("registerBtn");
+    const logoutBtn = document.getElementById("logoutBtn");
+
+    function setAuthUI(email) {
+      if (email) {
+        welcomeText.textContent = "Welcome, " + email;
+        loginBtn?.classList.add("hidden");
+        registerBtn?.classList.add("hidden");
+        logoutBtn?.classList.remove("hidden");
+      } else {
+        welcomeText.textContent = "";
+        loginBtn?.classList.remove("hidden");
+        registerBtn?.classList.remove("hidden");
+        logoutBtn?.classList.add("hidden");
+      }
+    }
+    setAuthUI(storedEmail);
+
+    async function logoutUser() {
+      try {
+        await sb.auth.signOut();
+      } catch (e) {
+        console.warn("Sign-out error", e);
+      }
+      localStorage.removeItem("userEmail");
+      setAuthUI(null);
+      window.location.href = "login.html";
+    }
+    document.getElementById("logoutBtn").addEventListener("click", logoutUser);
+
+    // Mobile menu toggle
+    const menuBtn = document.getElementById("menu-btn");
     const menu = document.getElementById("menu");
-    menu.classList.toggle("hidden");
-  });
-</script>
+    menuBtn.addEventListener("click", () => {
+      const isHidden = menu.classList.toggle("hidden");
+      menuBtn.setAttribute("aria-expanded", String(!isHidden));
+    });
 
-  const SUPABASE_URL = "https://hxsqzscxtcdmstilbnzm.supabase.co";
-  const SUPABASE_KEY = "YOUR_SUPABASE_ANON_KEY";
-  const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-
-  // Show/hide login/logout based on user state
-  const userEmail = localStorage.getItem("userEmail");
-  if (userEmail) {
-    document.getElementById("welcomeText").textContent = "Welcome, " + userEmail;
-    document.getElementById("loginBtn").classList.add("hidden");
-    document.getElementById("registerBtn").classList.add("hidden");
-    document.getElementById("logoutBtn").classList.remove("hidden");
-  }
-
-  async function logoutUser() {
-    await supabase.auth.signOut();
-    localStorage.removeItem("userEmail");
-    window.location.href = "login.html";
-  }
-
-  // Mobile menu toggle
-  document.getElementById("menu-btn").addEventListener("click", function() {
-    const menu = document.getElementById("menu");
-    menu.classList.toggle("hidden");
-  });
-</script>
-
-  const SUPABASE_URL = "https://hxsqzscxtcdmstilbnzm.supabase.co";
-  const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh4c3F6c2N4dGNkbXN0aWxibnptIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTU0MTQxNTgsImV4cCI6MjA3MDk5MDE1OH0.QTMdxozUFDA_5gUau3w06YgSpZwRe9fGYo2Ale-jmts";
-  const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-
-  // Check login status
-  const userEmail = localStorage.getItem("userEmail");
-  if (userEmail) {
-    document.getElementById("welcomeText").textContent = "Welcome, " + userEmail;
-    document.getElementById("loginBtn").classList.add("hidden");
-    document.getElementById("registerBtn").classList.add("hidden");
-    document.getElementById("logoutBtn").classList.remove("hidden");
-  }
-
-  async function logoutUser() {
-    await supabaseClient.auth.signOut();
-    localStorage.removeItem("userEmail");
-    window.location.href = "login.html";
-  }
-
-  // ✅ Mobile Menu Toggle Fix
-  const menuBtn = document.getElementById("menu-btn");
-  const menu = document.getElementById("menu");
-
-  menuBtn.addEventListener("click", () => {
-    menu.classList.toggle("hidden");
-  });
-</script>
-
-
-
-    <!-- Hero Section -->
-    <section class="hero py-16 text-center">
-        <h1 class="text-4xl font-bold mb-4">Welcome to Book Studio</h1>
-        <p class="text-lg">Explore our collection of books and increase your knowledge.</p>
-    </section>
-
-    <!-- Books Section (Page 1) -->
-    <section id="books" class="py-16">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-8">Our Books</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
-                <!-- Book Card 1 -->
-                <div class="book-card bg-white rounded-lg shadow-md p-4">
-                    <h3 class="text-xl font-bold">The Sealed Nectar (Ar-Raheeq al-Makhtum)</h3>
-                    <p class="text-gray-600">A detailed biography of the Prophet Muhammad (PBUH).</p>
-                    <a href="#The Sealed Nectar (Ar-Raheeq al-Makhtum)" onclick="showBookDetail('The Sealed Nectar (Ar-Raheeq al-Makhtum)')" class="text-blue-500 hover:underline">View Details</a>
-                </div>
-                <!-- Book Card 2 -->
-                <div class="book-card bg-white rounded-lg shadow-md p-4">
-                    <h3 class="text-xl font-bold">Muhammad: His Life Based on the Earliest Sources</h3>
-                    <p class="text-gray-600">A captivating biography of Prophet Muhammad ﷺ based on the earliest authentic sources.
-.</p>
-                    <a href="#Muhammad: His Life Based on the Earliest Sources" onclick="showBookDetail('Muhammad: His Life Based on the Earliest Sources')" class="text-blue-500 hover:underline">View Details</a>
-                </div>
-                <!-- Book Card 3 -->
-                <div class="book-card bg-white rounded-lg shadow-md p-4">
-                    <h3 class="text-xl font-bold">Saints and Heroes</h3>
-                    <p class="text-gray-600">Stories of great Islamic figures and their achievements.</p>
-                    <a href="#saints-heroes" onclick="showBookDetail('saints-heroes')" class="text-blue-500 hover:underline">View Details</a>
-                </div>
-                <!-- Book Card 4 -->
-                <div class="book-card bg-white rounded-lg shadow-md p-4">
-                    <h3 class="text-xl font-bold">The Great Caliphs</h3>
-                    <p class="text-gray-600">Biographies of the first four Caliphs of Islam.</p>
-                    <a href="#great-caliphs" onclick="showBookDetail('great-caliphs')" class="text-blue-500 hover:underline">View Details</a>
-                </div>
-            </div>
-            <!-- Page Navigation Links -->
-            <div class="mt-8 text-center">
-                <a href="page2.html" class="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700">Next Page</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Detailed Book Sections (Hidden initially) -->
-
-    <!-- Book 1: The Sealed Nectar (Ar-Raheeq al-Makhtum) -->
-    <section id="The Sealed Nectar (Ar-Raheeq al-Makhtum)" class="hidden py-16">
-        <div class="container mx-auto px-4 max-w-4xl">
-            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-                <div class="md:flex">
-                    <div class="md:w-1/3 p-6">
-                        <img src="https://m.media-amazon.com/images/I/61jeTQiyh7L._SL500_.jpg">
-                    </div>
-                    <div class="md:w-2/3 p-6">
-                        <h2 class="text-3xl font-bold mb-4">The Sealed Nectar (Ar-Raheeq al-Makhtum)</h2>
-                        <div class="flex items-center mb-4">
-                            <span class="text-yellow-400">★★★★☆</span>
-                            <span class="text-gray-600 ml-2">(4.5/5)</span>
-                        </div>
-                        <p class="text-lg mb-4">A detailed book on the life of the Prophet Muhammad (PBUH).</p>
-                        <div class="space-y-3 mb-6">
-                           
-                        
-                            <p><strong>Level:</strong> Intermediate</p>
-                            <h2 class="text-xl font-bold">Want to listen?</h2>
-                        <p>If you want to hear the story, 
-                            just click below hear now 👇</p>
-                        </div>
-                        <button class="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700"><a href="https://www.audible.com/">hear now</a> </button>
-                        <a href="#books" class="ml-4 text-blue-600 hover:underline" onclick="hideBookDetail('The Sealed Nectar (Ar-Raheeq al-Makhtum)')">Go back to books</a>
-                    </div>
-                </div>
-                <div class="p-6 border-t">
-                    <h3 class="text-xl font-bold mb-3">Book Details</h3>
-                    <p class="text-gray-700"><h1>The Sealed Nectar (Ar-Raheeq al-Makhtum)</h1>
-<h2>By Safi-ur-Rahman al-Mubarakpuri</h2>
-
-<p><strong>The Sealed Nectar</strong> is one of the most acclaimed and authentic biographies of the Prophet Muhammad ﷺ. It provides a comprehensive look at his life, mission, struggles, and the timeless lessons that continue to inspire millions of people around the world.</p>
-
-<h3>Introduction</h3>
-<p>The book opens with the historical background of Arabia before the advent of Islam. It describes the social, political, and religious conditions of the Arabs, showing how the world was in desperate need of guidance and reform. The author paints a vivid picture of the chaos and ignorance that existed before the Prophet’s mission, making it clear why his coming was a turning point in history.</p>
-
-<h3>Early Life of the Prophet ﷺ</h3>
-<p>The biography then traces the noble lineage of the Prophet ﷺ, his birth in Makkah, and his early childhood as an orphan. It highlights his honesty, truthfulness, and character that earned him the title of <em>Al-Ameen</em> (The Trustworthy) even before prophethood. His marriage to Khadijah (RA) and the tranquility of his early life are beautifully described, preparing the reader for the great mission that awaited him.</p>
-
-<h3>The Beginning of Revelation</h3>
-<p>One of the most powerful parts of the book is the description of the first revelation in the Cave of Hira. The author explains the shock, fear, and ultimate submission of the Prophet ﷺ as he received the divine message from Angel Jibreel (Gabriel). From this moment, the Prophet ﷺ became the Messenger of Allah, tasked with delivering the truth to mankind.</p>
-
-<h3>Opposition in Makkah</h3>
-<p>The book then details the years of struggle in Makkah. The Prophet ﷺ faced insults, boycotts, torture of his followers, and numerous plots against his life. Yet he remained steadfast with patience, courage, and unwavering faith in Allah. Stories of companions like Bilal (RA), Sumayyah (RA), and Abu Bakr (RA) show how Islam spread despite the severe persecution.</p>
-
-<h3>The Migration to Madinah</h3>
-<p>One of the most dramatic and inspiring chapters is the Hijrah (Migration) to Madinah. The author narrates how the Prophet ﷺ left Makkah secretly, facing danger at every step, but protected by Allah’s divine plan. In Madinah, the Prophet ﷺ established the first Islamic state, based on justice, equality, and mutual respect between Muslims, Jews, and other communities.</p>
-
-<h3>The Madinan Period</h3>
-<p>In this section, the book covers major events such as the Battles of Badr, Uhud, and Khandaq. It explains how the Prophet ﷺ combined spiritual leadership with political wisdom and military strategy. Despite hardships and betrayals, he remained merciful and forgiving. The Treaty of Hudaybiyyah is highlighted as a masterstroke of diplomacy that paved the way for the spread of Islam.</p>
-
-<h3>The Conquest of Makkah</h3>
-<p>The climax of the Prophet’s mission comes with the peaceful conquest of Makkah. Instead of revenge, the Prophet ﷺ granted a general amnesty to his enemies, showing the highest example of forgiveness in human history. The idols of the Ka’bah were destroyed, and the city was purified for the worship of Allah alone.</p>
-
-<h3>The Farewell Pilgrimage</h3>
-<p>In his final years, the Prophet ﷺ delivered the Farewell Sermon, summarizing the core teachings of Islam: equality of mankind, rights of women, prohibition of racism, sanctity of life, and adherence to the Qur’an and Sunnah. Shortly after, he returned to his Lord, leaving behind a legacy that transformed the world forever.</p>
-
-<h3>Conclusion</h3>
-<p><em>The Sealed Nectar</em> is more than just a biography—it is a guide for life. It shows the Prophet ﷺ not only as a Messenger of Allah but also as a husband, father, leader, and reformer. The book inspires readers to embody values of patience, mercy, justice, and devotion to God. Its eloquence and depth make it a book that one does not just read but also feels compelled to reflect upon and live by.</p>
-
-<br>
-<p><strong>In short, The Sealed Nectar is a treasure that brings the life of the Prophet ﷺ to life, making the reader’s heart yearn to follow his footsteps and share his message with the world.</strong></p>
-</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Book 2: Seerah: Muhammad: His Life Based on the Earliest Sources -->
-    <section id="Muhammad: His Life Based on the Earliest Sources" class="hidden py-16">
-        <div class="container mx-auto px-4 max-w-4xl">
-            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-                <div class="md:flex">
-                    <div class="md:w-1/3 p-6">
-                        <img src="https://m.media-amazon.com/images/I/51qVmuUMpGL._UF1000%2C1000_QL80_.jpg">
-                    </div>
-                    <div class="md:w-2/3 p-6">
-                        <h2 class="text-3xl font-bold mb-4">Muhammad: His Life Based on the Earliest Sources</h2>
-                        <div class="flex items-center mb-4">
-                            <span class="text-yellow-400">★★★★★</span>
-                            <span class="text-gray-600 ml-2">(4.8/5)</span>
-                        </div>
-                        <p class="text-lg mb-4">A captivating biography of Prophet Muhammad ﷺ based on the earliest authentic sources.
-.</p>
-                        <div class="space-y-3 mb-6">
-                           
-                          
-                            <p><strong>Level:</strong> Advanced</p>
-                            <h2 class="text-xl font-bold">Want to listen?</h2>
-<p>If you want to hear the story, just click below hear now 👇</p>
-                        </div>
-                        <button class="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700"><a href="https://www.audible.com/">hear now</a></button>
-                        <a href="#books" class="ml-4 text-blue-600 hover:underline" onclick="hideBookDetail('Muhammad: His Life Based on the Earliest Sources')">Go back to books</a>
-                    </div>
-                </div>
-                <div class="p-6 border-t">
-                    <h3 class="text-xl font-bold mb-3">Book Details</h3>
-                    <p class="text-gray-700"><h1>Muhammad: His Life Based on the Earliest Sources</h1>
-<h2>By Martin Lings</h2>
-
-<p><strong>"Muhammad: His Life Based on the Earliest Sources"</strong> is one of the most celebrated biographies of the Prophet Muhammad ﷺ in the English language. Written by the British scholar Martin Lings, the book relies heavily on authentic early Islamic sources, presenting the story of the Prophet’s life with literary elegance, depth, and reverence. It is considered one of the finest works for readers who seek both historical accuracy and spiritual insight.</p>
-
-<h3>Introduction</h3>
-<p>The book begins by setting the scene of Arabia before Islam, describing its culture, tribes, and spiritual emptiness. Martin Lings emphasizes that the world was in a state of moral and social decline, and that Arabia, despite being largely unknown to empires, would soon become the center of a transformation that changed history forever.</p>
-
-<h3>Early Life of the Prophet ﷺ</h3>
-<p>Lings narrates the noble lineage of the Prophet Muhammad ﷺ, tracing his ancestry to Prophet Ibrahim (Abraham) and Ismail. The book beautifully describes his birth, the death of his parents, and his upbringing as an orphan under the care of his grandfather Abdul Muttalib and later his uncle Abu Talib. The narrative highlights his virtues, honesty, and truthfulness, which earned him respect in Makkah and the title <em>Al-Ameen</em> (the Trustworthy).</p>
-
-<h3>The First Revelation</h3>
-<p>One of the most moving passages is the account of the first revelation in the Cave of Hira. Martin Lings portrays the Prophet’s ﷺ experience with powerful storytelling, showing his fear, humility, and ultimate submission to God’s command. This pivotal moment marks the beginning of his prophethood and his lifelong mission to deliver the message of Islam.</p>
-
-<h3>Persecution in Makkah</h3>
-<p>Lings carefully recounts the years of opposition in Makkah. The Prophet ﷺ and his companions endured ridicule, physical abuse, economic boycotts, and torture. Yet their perseverance and trust in Allah inspired others to embrace Islam. Stories of early Muslims such as Bilal ibn Rabah, Ammar ibn Yasir, and Khadijah’s unwavering support provide powerful lessons of courage and faith.</p>
-
-<h3>The Night Journey and Ascension</h3>
-<p>The book also narrates the miraculous Isra and Mi’raj—the Night Journey to Jerusalem and the Ascension to the heavens. Lings presents this event with reverence, emphasizing its spiritual significance and the gift of prayer that was given to the Muslim community during this sacred journey.</p>
-
-<h3>The Migration to Madinah</h3>
-<p>The Hijrah (migration) to Madinah is a central theme, showing how the Prophet ﷺ, guided by Allah, left behind his beloved city of Makkah for the safety of his followers. In Madinah, he established the first Islamic state, built on principles of justice, unity, and faith. The brotherhood between the Muhajirun (emigrants) and the Ansar (helpers) is highlighted as an example of selflessness and solidarity.</p>
-
-<h3>Life in Madinah</h3>
-<p>Martin Lings details the Prophet’s ﷺ role as a statesman, judge, teacher, and leader. The book narrates major battles such as Badr, Uhud, and Khandaq, showing the challenges and victories of the Muslim community. It portrays the Prophet ﷺ as a man of immense patience, strategic brilliance, and mercy, even towards his enemies.</p>
-
-<h3>The Conquest of Makkah</h3>
-<p>One of the most powerful sections is the description of the Conquest of Makkah. Lings emphasizes how the Prophet ﷺ entered the city with humility and forgiveness. Despite years of hostility from the Quraysh, he granted amnesty to his former enemies and purified the Ka’bah from idols, restoring it as the house of monotheism.</p>
-
-<h3>The Farewell Pilgrimage</h3>
-<p>The book concludes with the Prophet’s ﷺ final pilgrimage, where he delivered the Farewell Sermon. Martin Lings quotes from the sermon, stressing its timeless message: the equality of all people regardless of race, the sanctity of life, the rights of women, and the importance of holding firmly to the Qur’an and Sunnah. Soon after, the Prophet ﷺ passed away, leaving behind a transformed world and a complete religion.</p>
-
-<h3>Conclusion</h3>
-<p>What makes this book unique is not only its reliance on the earliest sources but also its narrative style. Martin Lings writes with literary grace, drawing the reader into the story as though they are witnessing the events firsthand. The biography is both historically accurate and spiritually enriching, making it suitable for scholars, students, and seekers of faith alike.</p>
-
-<br>
-<p><strong>In short, "Muhammad: His Life Based on the Earliest Sources" is a masterpiece that brings the life of the Prophet ﷺ to light in a way that moves the heart, enriches the mind, and deepens one’s love and admiration for the Messenger of Allah.</strong></p>
-</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Book 3: Saints and Heroes -->
-    <section id="saints-heroes" class="hidden py-16">
-        <div class="container mx-auto px-4 max-w-4xl">
-            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-                <div class="md:flex">
-                    <div class="md:w-1/3 p-6">
-                        <img src="https://sophiainstitute.com/wp-content/uploads/2023/02/16757372646601-21041.jpeg" alt="Saints and Heroes Book Cover" class="w-full rounded-lg shadow-md">
-                    </div>
-                    <div class="md:w-2/3 p-6">
-                        <h2 class="text-3xl font-bold mb-4">Saints and Heroes</h2>
-                        <div class="flex items-center mb-4">
-                            <span class="text-yellow-400">★★★★☆</span>
-                            <span class="text-gray-600 ml-2">(4.6/5)</span>
-                        </div>
-                        <p class="text-lg mb-4">Stories of great Islamic figures and their achievements.</p>
-                        <div class="space-y-3 mb-6">
-                           
-                            
-                            <p><strong>Level:</strong> Elementary</p>
-                               <h2 class="text-xl font-bold">Want to listen?</h2>
-<p>If you want to hear the story, just click below hear now 👇</p>
-                        </div>
-                        <button class="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700"><a href="https://www.audible.com/">hear now</a></button>
-                        <a href="#books" class="ml-4 text-blue-600 hover:underline" onclick="hideBookDetail('saints-heroes')">Go back to books</a>
-                    </div>
-                </div>
-                <div class="p-6 border-t">
-                    <h3 class="text-xl font-bold mb-3">Book Details</h3>
-                    <p class="text-gray-700">In the mosaic of human history, there shines a constellation of extraordinary souls—saints and heroes whose lives transcend ordinary bounds, stirring our hearts with stories of courage, compassion, and indomitable spirit. Among them emerges Saint Juan Diego, the humble Nahua peasant who, in 1531, encountered the Virgin Mary on Tepeyac Hill and carried her miraculous image to the world—a testament to profound faith blooming in the simplest heart. Centuries later, Saint Teresa of Ávila, cloaked in the swirling mists of 16th-century Spain, reformed the Carmelite order with unyielding resolve, her fervent prayers igniting spiritual revolutions and shaping mystical contemplations for generations to come. We travel further through time to stand beside Saint Francis de Sales, speaking with gentle eloquence into hearts of doubt and despair, his warm voice offering solace and hope—teaching that holiness is not an unreachable summit, but a tender path walked in everyday love. And who could forget Philip Neri, whose joyful laughter echoed through the streets of Rome, reminding a weary world that sanctity resides as much in levity as in devotion, inviting the faithful to dance with grace toward God?
-
-Childhood’s whispers conjure images of Blessed Teresa of Calcutta, barefoot and serene, treading the fevered alleys of Calcutta, cradling broken lives in her arms, weaving threads of mercy where despair had woven grief. Alongside her stands Jean Vanier, whose gentle hands built homes for people cast aside by society, recognizing in each fragile soul the spark of divine dignity, teaching us that true heroism breathes in compassion, not conquest. Yet, these modern beacons find ancient company in legends etched by faith’s imagination—Saint Jerome, his loyal companion the gentle lion, a bond forged not by blood but by mutual trust, teaching that kindness tames even the fiercest hearts; Saint Brendan the Sailor, braving ocean’s mysteries on a tiny boat, chasing the horizon toward unseen lands and truths, urging us to voyage beyond comfort to discover the divine in the unknown.
-
-In each account, the author unfolds their humanity: the beggar turned king, the poet turned preacher, the fool turned sage—souls deemed insignificant by society yet chosen to reflect divine light. Their stories span continents and centuries, from the jungles of Mexico to the cobbled lanes of medieval Europe, weaving a tapestry where every thread glimmers with challenge and redemption. In 33 lively chapters, these lives spring forth—not as distant relics but as breathing companions, daring us to confront injustice, to extend mercy, to pursue truth. We meet Saint Elizabeth of Hungary, weaving miracles from her royal duties, offering bread to the poor until her very cloak transformed into roses when challenged by her husband—proof that faith can bloom amid privilege. We linger with Saint Vincent de Paul, whose burning love for the poor transformed charities and institutions, his legacy echoing in every hospital ward and orphanage that still bears his name.
-
-And beyond chronicles of nobility, the author honors unexpected heroes—the “cranks,” the “fools,” the overlooked—whose eccentricities conceal divine purpose. In their quirks reside courage; in their oddities, the power to challenge the world’s expectations. With illustrative head drawings that grace each chapter, their portraits invite us to see not haloed perfection, but flawed, beloved humanity—inviting us to imagine ourselves in their stories, beckoning the spark of heroism within our own hearts.
-
-This anthology, bridging legendary myth and historical fact, invites readers—especially young adults—to step into a realm where faith and legend entwine, where saints stand not on distant pedestals, but beside us, whispering: “You too can rise.” It asserts that holiness emerges not from isolation, but through engagement with suffering, society, the marginalized, the joyous, the everyday human. These saints and heroes are companions through time—soldiers and sailors, kings and queens, doctors and beggars, poets and diplomats—each offering a mirror to our own potential for courage, for generosity, for longing that reaches beyond self.
-
-In these pages unfolds a grand invitation: to look at history not as a silent archive, but as a living chorus of voices that refuse to be muted—the saint whose prayer broke chains, the hero whose mercy changed hearts, the unknown whose kindness altered destiny. They stand as “light-bearers,” luminous examples that enthral future generations, not through polished perfection but through daring humility, radical love, and the courage to answer a call greater than self. Ultimately, this anthology is more than a collection—it is a journey through the heart of humanity and sanctity, urging each of us to believe that even the smallest spark can become a beacon—and that Saints and Heroes are not merely those remembered in pages, but those whose stories continue to shape us, beckoning us to rise, to serve, to shine.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Book 4: The Great Caliphs -->
-    <section id="great-caliphs" class="hidden py-16">
-        <div class="container mx-auto px-4 max-w-4xl">
-            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-                <div class="md:flex">
-                    <div class="md:w-1/3 p-6">
-                        <img src="https://www.libertybooks.com/image/cache/catalog/9788178987767%201-626x974.jpg?q6" alt="The Great Caliphs Book Cover" class="w-full rounded-lg shadow-md">
-                    </div>
-                    <div class="md:w-2/3 p-6">
-                        <h2 class="text-3xl font-bold mb-4">The Great Caliphs</h2>
-                        <div class="flex items-center mb-4">
-                            <span class="text-yellow-400">★★★★☆</span>
-                            <span class="text-gray-600 ml-2">(4.7/5)</span>
-                        </div>
-                        <p class="text-lg mb-4">Sheds light on the lives and reigns of the first four Caliphs of Islam.</p>
-                        <div class="space-y-3 mb-6">
-                           
-                            
-                            <p><strong>Level:</strong> Intermediate</p>  
-                            <h2 class="text-xl font-bold">Want to listen?</h2>
-<p>If you want to hear the story, just click below hear now 👇</p>
-                        </div>
-                        <button class="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700"><a href="https://www.audible.com/">hear now</a></button>
-                        <a href="#books" class="ml-4 text-blue-600 hover:underline" onclick="hideBookDetail('great-caliphs')">Go back to books</a>
-                    </div>
-                </div>
-                <div class="p-6 border-t">
-                    <h3 class="text-xl font-bold mb-3">Book Details</h3>
-                    <p class="text-gray-700">This book provides a detailed discussion of the great sacrifices and principles of governance of Hazrat Abu Bakr, Hazrat Umar, and Hazrat Ali (R.A).Amira K. Bennison's "The Great Caliphs" offers a re-evaluation of the 'Abbasid caliphate (750-1258 CE), a period often considered the classical age of Islamic civilization. The central thesis of the book is to challenge the popular misconception that Islamic civilization was a monolithic, alien culture that arose in opposition to the Western Graeco-Roman world. Instead, Bennison argues that the 'Abbasid Empire was a natural successor to the great civilizations of antiquity, including those of Greece, Rome, Byzantium, and Persia. By placing the 'Abbasid era within this broader historical context, the book highlights the continuity of cultural and intellectual traditions across the Mediterranean and Near East. Bennison posits that the Arabs, far from attempting to purge pre-existing cultures, were active participants in a process of cultural synthesis, preserving, systematizing, and building upon the knowledge they inherited from older civilizations. This approach debunks the idea of a sharp cultural divide between East and West, demonstrating how the 'Abbasids were inheritors of "civilized" values that Western civilization often claims as its own unique legacy.
-
-The book delves into various facets of 'Abbasid society to support this argument. It begins with a political framework, tracing the rise of the 'Abbasids and the major developments that shaped their empire, from the move of the capital to Baghdad to the challenges posed by internal conflicts and external pressures like the Crusades. Bennison then explores the thriving urban life of the period, showing how 'Abbasid cities were not only centers of political power but also hubs of commerce and intellectual exchange. She documents how urban planning and architectural styles were influenced by earlier models while also developing distinctively Islamic features. A significant portion of the book is dedicated to the intellectual "Golden Age" of Baghdad, particularly the famed translation movement. Here, Bennison details the systematic effort by Muslim scholars to translate and study works of Greek and Persian philosophy, medicine, mathematics, and astronomy. She emphasizes that this was not merely a process of transmission; 'Abbasid scholars made their own significant contributions, advancing these fields in ways that would later prove invaluable to European thinkers during the Renaissance. The book thus portrays the 'Abbasid Empire not as an isolated cultural entity but as a dynamic, cosmopolitan civilization that played a crucial role in the global history of ideas.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-gradient-to-r from-teal-800 to-teal-600 text-white py-10 mt-16">
-        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
-            
-            <!-- About -->
-            <div>
-                <h3 class="text-2xl font-bold mb-3">Book Studio</h3>
-                <p class="text-gray-200 mb-4">
-                    Your hub for books that inspire, educate, and entertain.
-                    Explore the world of knowledge with us.
-                </p>
-                <div class="flex space-x-4 text-lg">
-                    <a href="#" class="hover:text-yellow-300"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="hover:text-yellow-300"><i class="fab fa-twitter"></i></a>
-                    <a href="#" class="hover:text-yellow-300"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="hover:text-yellow-300"><i class="fab fa-linkedin"></i></a>
-                </div>
-            </div>
-            
-            <!-- Quick Links -->
-            <div>
-                <h4 class="text-xl font-semibold mb-3">Important Links</h4>
-                <ul class="space-y-2">
-                    <li><a href="index.html" class="hover:underline">Home</a></li>
-                    <li><a href="about-us.html" class="hover:underline">About Us</a></li>
-                    <li><a href="#books" class="hover:underline">Books</a></li>
-                    <li><a href="contact-us.html" class="hover:underline">Contact</a></li>
-                    <li><a href="privacy-policy.html" class="hover:underline">Privacy Policy</a></li>
-                    <li><a href="audioable-disclosure.html" class="hover:underline">Audioable Disclosure</a></li>
-                </ul>
-            </div>
-            
-            <!-- Newsletter -->
-            <div>
-                <h4 class="text-xl font-semibold mb-3">Latest Information</h4>
-                <p class="text-gray-200 mb-3">Subscribe to our newsletter for the latest updates.</p>
-                <form class="flex">
-                    <input type="email" placeholder="Enter your email" 
-                            class="p-2 rounded-l-lg w-full text-gray-900 focus:outline-none">
-                    <button class="bg-yellow-400 hover:bg-yellow-500 text-gray-900 px-4 rounded-r-lg">
-                        Subscribe
-                    </button>
-                </form>
-            </div>
-        </div>
-
-        <!-- Bottom Bar -->
-        <div class="border-t border-gray-400 mt-8 pt-4 text-center text-sm text-gray-200">
-            <p>&copy; <span id="year"></span> Book Studio. All Rights Reserved.</p>
-        </div>
-    </footer>
-
-<script>
-    // Automatically update the year
+    // Year auto-update
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    // Functions to show and hide book details
-    function showBookDetail(bookId) {
-        document.querySelectorAll('section[id]').forEach(el => {
-            if (el.id !== "books" && el.id !== bookId && el.id !== "home") {
-                el.classList.add('hidden');
-            } else if (el.id === "books") {
-                el.classList.add('hidden');
-            }
-        });
-        document.getElementById(bookId).classList.remove('hidden');
-        document.getElementById(bookId).scrollIntoView({ behavior: 'smooth' });
+    // Show/Hide book details
+    function showBookDetail(id) {
+      document.querySelectorAll("section[id]").forEach(el => {
+        if (el.id !== "books" && el.id !== id) el.classList.add("hidden");
+        if (el.id === "books") el.classList.add("hidden");
+      });
+      const target = document.getElementById(id);
+      if (target) {
+        target.classList.remove("hidden");
+        target.scrollIntoView({ behavior: "smooth" });
+      }
     }
-
-    function hideBookDetail(bookId) {
-        document.getElementById(bookId).classList.add('hidden');
-        document.getElementById("books").classList.remove('hidden');
-        document.getElementById("books").scrollIntoView({ behavior: 'smooth' });
+    function hideBookDetail(id) {
+      const target = document.getElementById(id);
+      if (target) target.classList.add("hidden");
+      const books = document.getElementById("books");
+      books.classList.remove("hidden");
+      books.scrollIntoView({ behavior: "smooth" });
     }
-</script>
-
+  </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
