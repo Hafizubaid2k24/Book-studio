@@ -40,6 +40,7 @@
 
     <!-- Navigation Bar -->
    <!-- Navbar -->
+<!-- Navbar -->
 <nav class="bg-teal-700 text-white shadow-lg">
   <div class="container mx-auto px-4 py-3 flex justify-between items-center">
     <h1 class="text-xl font-bold">📚 Book Studio</h1>
@@ -62,6 +63,29 @@
     </div>
   </div>
 </nav>
+
+<!-- Supabase Script -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+<script>
+  const SUPABASE_URL = "https://hxsqzscxtcdmstilbnzm.supabase.co";
+  const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh4c3F6c2N4dGNkbXN0aWxibnptIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTU0MTQxNTgsImV4cCI6MjA3MDk5MDE1OH0.QTMdxozUFDA_5gUau3w06YgSpZwRe9fGYo2Ale-jmts";
+  const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+  // Check if user logged in
+  const userEmail = localStorage.getItem("userEmail");
+  if (userEmail) {
+    document.getElementById("welcomeText").textContent = "Welcome, " + userEmail;
+    document.getElementById("loginBtn").classList.add("hidden");
+    document.getElementById("registerBtn").classList.add("hidden");
+    document.getElementById("logoutBtn").classList.remove("hidden");
+  }
+
+  async function logoutUser() {
+    await _supabase.auth.signOut();
+    localStorage.removeItem("userEmail");
+    window.location.href = "login.html";
+  }
+</script>
 
 
     <!-- Hero Section -->
@@ -409,6 +433,7 @@ The book delves into various facets of 'Abbasid society to support this argument
 
 </body>
 </html>
+
 
 
 
