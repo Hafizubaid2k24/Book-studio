@@ -39,8 +39,7 @@
 <body>
 
     <!-- Navigation Bar -->
-   <!-- Navbar -->
-<!-- Navbar -->
+<!-- Navbar Start -->
 <nav class="bg-teal-700 text-white shadow-lg">
   <div class="container mx-auto px-4 py-3 flex justify-between items-center">
     <h1 class="text-xl font-bold">📚 Book Studio</h1>
@@ -52,7 +51,7 @@
       <a href="privacy-policy.html" class="hover:text-gray-200">Privacy Policy</a>
       <a href="audible-disclosure.html" class="hover:text-gray-200">Audioable Disclosure</a>
 
-      <!-- Auth Links -->
+      <!-- Authentication Links -->
       <span id="welcomeText" class="font-medium"></span>
       <a href="login.html" id="loginBtn" class="hover:text-gray-200">Login</a>
       <a href="register.html" id="registerBtn" class="hover:text-gray-200">Register</a>
@@ -63,15 +62,15 @@
     </div>
   </div>
 </nav>
+<!-- Navbar End -->
 
-<!-- Supabase Script -->
+<!-- Supabase Auth Script (Place this just before closing </body>) -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 <script>
   const SUPABASE_URL = "https://hxsqzscxtcdmstilbnzm.supabase.co";
-  const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh4c3F6c2N4dGNkbXN0aWxibnptIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTU0MTQxNTgsImV4cCI6MjA3MDk5MDE1OH0.QTMdxozUFDA_5gUau3w06YgSpZwRe9fGYo2Ale-jmts";
-  const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+  const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJxdXBhcG8iLCJyZWYiOiJodg=="; // use your actual anon key
+  const supa = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-  // Check if user logged in
   const userEmail = localStorage.getItem("userEmail");
   if (userEmail) {
     document.getElementById("welcomeText").textContent = "Welcome, " + userEmail;
@@ -81,12 +80,11 @@
   }
 
   async function logoutUser() {
-    await _supabase.auth.signOut();
+    await supa.auth.signOut();
     localStorage.removeItem("userEmail");
     window.location.href = "login.html";
   }
 </script>
-
 
     <!-- Hero Section -->
     <section class="hero py-16 text-center">
@@ -433,6 +431,7 @@ The book delves into various facets of 'Abbasid society to support this argument
 
 </body>
 </html>
+
 
 
 
