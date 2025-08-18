@@ -48,38 +48,36 @@
 <body>
 
     <!-- Navigation Bar -->
-<!-- Navbar Start -->
-<nav class="bg-teal-700 text-white shadow-lg">
-  <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-    <h1 class="text-xl font-bold">📚 Book Studio</h1>
-    <div class="space-x-6 flex items-center">
-      <a href="index.html" class="hover:text-gray-200">Home</a>
-      <a href="about-us.html" class="hover:text-gray-200">About Us</a>
-      <a href="#books" class="hover:text-gray-200">Books</a>
-      <a href="contact-us.html" class="hover:text-gray-200">Contact</a>
-      <a href="privacy-policy.html" class="hover:text-gray-200">Privacy Policy</a>
-      <a href="audible-disclosure.html" class="hover:text-gray-200">Audioable Disclosure</a>
+<nav class="bg-teal-700 p-4">
+  <div class="container mx-auto flex justify-between items-center">
+    <a href="index.html" class="text-white font-bold text-xl">📚 Book Studio</a>
 
-      <!-- Authentication Links -->
-      <span id="welcomeText" class="font-medium"></span>
-      <a href="login.html" id="loginBtn" class="hover:text-gray-200">Login</a>
-      <a href="register.html" id="registerBtn" class="hover:text-gray-200">Register</a>
-      <button onclick="logoutUser()" id="logoutBtn"
-              class="hidden bg-white text-teal-700 px-3 py-1 rounded-full hover:bg-gray-100">
-        Logout
-      </button>
+    <!-- Hamburger for mobile -->
+    <button id="menu-btn" class="text-white text-2xl md:hidden">
+      ☰
+    </button>
+
+    <!-- Navbar Links -->
+    <div id="menu" class="hidden md:flex space-x-4 items-center">
+      <a href="index.html" class="text-white hover:underline">Home</a>
+      <a href="#books" class="text-white hover:underline">Books</a>
+      <a href="#about" class="text-white hover:underline">About</a>
+      <a href="#contact" class="text-white hover:underline">Contact</a>
+      <span id="welcomeText" class="text-white font-medium"></span>
+      <a href="register.html" id="registerBtn" class="text-white hover:underline">Register</a>
+      <a href="login.html" id="loginBtn" class="text-white hover:underline">Login</a>
+      <button onclick="logoutUser()" id="logoutBtn" class="hidden bg-white text-teal-700 px-3 py-1 rounded-lg font-semibold hover:bg-gray-100">Logout</button>
     </div>
   </div>
 </nav>
-<!-- Navbar End -->
 
-<!-- Supabase Auth Script (Place this just before closing </body>) -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
 <script>
   const SUPABASE_URL = "https://hxsqzscxtcdmstilbnzm.supabase.co";
-  const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJxdXBhcG8iLCJyZWYiOiJodg=="; // use your actual anon key
-  const supa = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+  const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh4c3F6c2N4dGNkbXN0aWxibnptIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTU0MTQxNTgsImV4cCI6MjA3MDk5MDE1OH0.QTMdxozUFDA_5gUau3w06YgSpZwRe9fGYo2Ale-jmts";
+  const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
+  // Check if user logged in
   const userEmail = localStorage.getItem("userEmail");
   if (userEmail) {
     document.getElementById("welcomeText").textContent = "Welcome, " + userEmail;
@@ -89,11 +87,24 @@
   }
 
   async function logoutUser() {
-    await supa.auth.signOut();
+    await supabaseClient.auth.signOut();
     localStorage.removeItem("userEmail");
     window.location.href = "login.html";
   }
+
+  // Mobile Menu Toggle
+  const menuBtn = document.getElementById("menu-btn");
+  const menu = document.getElementById("menu");
+
+  menuBtn.addEventListener("click", () => {
+    menu.classList.toggle("hidden");
+    menu.classList.toggle("flex");
+    menu.classList.toggle("flex-col");
+    menu.classList.toggle("space-y-2");
+    menu.classList.toggle("mt-2");
+  });
 </script>
+
 
     <!-- Hero Section -->
     <section class="hero py-16 text-center">
@@ -440,6 +451,7 @@ The book delves into various facets of 'Abbasid society to support this argument
 
 </body>
 </html>
+
 
 
 
