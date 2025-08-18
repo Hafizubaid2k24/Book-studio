@@ -39,19 +39,30 @@
 <body>
 
     <!-- Navigation Bar -->
-    <nav class="navbar text-white shadow-lg">
-        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-            <div class="text-xl font-bold">Book Studio</div>
-            <div class="space-x-6">
-                <a href="index.html" class="hover:text-gray-200">Home</a>
-                <a href="about-us.html" class="hover:text-gray-200">About Us</a>
-                <a href="#books" class="hover:text-gray-200">Books</a>
-                <a href="contact-us.html" class="hover:text-gray-200">Contact</a>
-                <a href="privacy-policy.html" class="hover:text-gray-200">Privacy Policy</a>
-                <a href="audible-disclosure.html" class="hover:text-gray-200">Audioable Disclosure</a>
-            </div>
-        </div>
-    </nav>
+   <!-- Navbar -->
+<nav class="bg-teal-700 text-white shadow-lg">
+  <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+    <h1 class="text-xl font-bold">📚 Book Studio</h1>
+    <div class="space-x-6 flex items-center">
+      <a href="index.html" class="hover:text-gray-200">Home</a>
+      <a href="about-us.html" class="hover:text-gray-200">About Us</a>
+      <a href="#books" class="hover:text-gray-200">Books</a>
+      <a href="contact-us.html" class="hover:text-gray-200">Contact</a>
+      <a href="privacy-policy.html" class="hover:text-gray-200">Privacy Policy</a>
+      <a href="audible-disclosure.html" class="hover:text-gray-200">Audioable Disclosure</a>
+
+      <!-- Auth Links -->
+      <span id="welcomeText" class="font-medium"></span>
+      <a href="login.html" id="loginBtn" class="hover:text-gray-200">Login</a>
+      <a href="register.html" id="registerBtn" class="hover:text-gray-200">Register</a>
+      <button onclick="logoutUser()" id="logoutBtn"
+              class="hidden bg-white text-teal-700 px-3 py-1 rounded-full hover:bg-gray-100">
+        Logout
+      </button>
+    </div>
+  </div>
+</nav>
+
 
     <!-- Hero Section -->
     <section class="hero py-16 text-center">
@@ -398,6 +409,7 @@ The book delves into various facets of 'Abbasid society to support this argument
 
 </body>
 </html>
+
 
 
 
