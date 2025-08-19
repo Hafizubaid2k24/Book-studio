@@ -3,45 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book Studio - Home</title>
 
-  <!-- SEO Title & Meta -->
-  <title>Book Studio | Free Islamic Books Online - Read & Listen</title>
-  <meta name="description" content="Discover free Islamic books like The Sealed Nectar, Muhammad: His Life, Saints & Heroes, and more. Read online, explore summaries, and listen to audio versions." />
+  <meta name="description" content="Book Studio — explore inspiring Islamic books with clean summaries, details, and audio options." />
   <link rel="canonical" href="https://hafizubaid2k24.github.io/Book-studio/" />
-
-  <!-- Open Graph (Social Sharing) -->
-  <meta property="og:title" content="Book Studio - Free Islamic Books Online" />
-  <meta property="og:description" content="Read and listen to authentic Islamic books including The Sealed Nectar and more. Explore summaries, reviews, and audio versions." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://hafizubaid2k24.github.io/Book-studio/" />
-  <meta property="og:image" content="https://m.media-amazon.com/images/I/61jeTQiyh7L._SL500_.jpg" />
-
-  <!-- Schema.org JSON-LD (Books) -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Book Studio",
-    "url": "https://hafizubaid2k24.github.io/Book-studio/",
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": "https://hafizubaid2k24.github.io/Book-studio/?q={search_term_string}",
-      "query-input": "required name=search_term_string"
-    }
-  }
-  </script>
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Book",
-    "name": "The Sealed Nectar (Ar-Raheeq al-Makhtum)",
-    "author": { "@type": "Person", "name": "Safi-ur-Rahman al-Mubarakpuri" },
-    "genre": "Islamic Biography",
-    "inLanguage": "en",
-    "url": "https://hafizubaid2k24.github.io/Book-studio/#sealed-nectar"
-  }
-  </script>
 
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-YKV4N73P6F"></script>
@@ -83,28 +48,223 @@
         <a href="contact-us.html" class="text-white hover:underline">Contact</a>
         <a href="privacy-policy.html" class="text-white hover:underline">Privacy Policy</a>
         <a href="audible-disclosure.html" class="text-white hover:underline">Audible Disclosure</a>
+
         <span id="welcomeText" class="text-white font-medium"></span>
         <a href="register.html" id="registerBtn" class="text-white hover:underline">Register</a>
         <a href="login.html" id="loginBtn" class="text-white hover:underline">Login</a>
-        <button id="logoutBtn" class="hidden bg-white text-teal-700 px-3 py-1 rounded-lg hover:bg-gray-100 font-semibold">Logout</button>
+        <button id="logoutBtn" class="hidden bg-white text-teal-700 px-3 py-1 rounded-lg hover:bg-gray-100 font-semibold">
+          Logout
+        </button>
       </div>
     </div>
   </nav>
 
   <!-- HERO -->
   <section class="hero py-16 text-center">
-    <h1 class="text-4xl font-bold mb-4">Welcome to Book Studio | Free Islamic Books Online</h1>
-    <p class="text-lg">Read authentic Islamic books, summaries, and listen to audio versions anytime.</p>
+    <h1 class="text-4xl font-bold mb-4">Welcome to Book Studio</h1>
+    <p class="text-lg">Explore our collection of books and increase your knowledge.</p>
   </section>
 
-  <!-- (Rest of your existing content remains same) -->
+  <!-- BOOKS -->
+  <section id="books" class="py-16">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold text-center mb-8">Our Books</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+        <!-- Book 1 -->
+        <div class="book-card bg-white rounded-lg shadow-md p-4">
+          <h3 class="text-xl font-bold">The Sealed Nectar (Ar-Raheeq al-Makhtum)</h3>
+          <p class="text-gray-600">A detailed biography of the Prophet Muhammad ﷺ.</p>
+          <a href="#sealed-nectar" onclick="showBookDetail('sealed-nectar')" class="text-blue-600 hover:underline">View Details</a>
+        </div>
+
+        <!-- Book 2 -->
+        <div class="book-card bg-white rounded-lg shadow-md p-4">
+          <h3 class="text-xl font-bold">Muhammad: His Life Based on the Earliest Sources</h3>
+          <p class="text-gray-600">A captivating biography based on the earliest authentic sources.</p>
+          <a href="#muhammad-earliest-sources" onclick="showBookDetail('muhammad-earliest-sources')" class="text-blue-600 hover:underline">View Details</a>
+        </div>
+
+        <!-- Book 3 -->
+        <div class="book-card bg-white rounded-lg shadow-md p-4">
+          <h3 class="text-xl font-bold">Saints and Heroes</h3>
+          <p class="text-gray-600">Stories of great Islamic figures and their achievements.</p>
+          <a href="#saints-heroes" onclick="showBookDetail('saints-heroes')" class="text-blue-600 hover:underline">View Details</a>
+        </div>
+
+        <!-- Book 4 -->
+        <div class="book-card bg-white rounded-lg shadow-md p-4">
+          <h3 class="text-xl font-bold">The Great Caliphs</h3>
+          <p class="text-gray-600">Biographies of the first four Caliphs of Islam.</p>
+          <a href="#great-caliphs" onclick="showBookDetail('great-caliphs')" class="text-blue-600 hover:underline">View Details</a>
+        </div>
+      </div>
+
+      <div class="mt-8 text-center">
+        <a href="page2.html" class="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700" role="button">Next Page</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- DETAILS: The Sealed Nectar -->
+  <section id="sealed-nectar" class="hidden py-16">
+    <div class="container mx-auto px-4 max-w-4xl">
+      <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+        <div class="md:flex">
+          <div class="md:w-1/3 p-6">
+            <img src="https://m.media-amazon.com/images/I/61jeTQiyh7L._SL500_.jpg" alt="The Sealed Nectar book cover" class="w-full rounded-lg shadow-md" />
+          </div>
+          <div class="md:w-2/3 p-6">
+            <h2 class="text-3xl font-bold mb-4">The Sealed Nectar (Ar-Raheeq al-Makhtum)</h2>
+            <div class="flex items-center mb-4" aria-label="Rating 4.5 out of 5">
+              <span class="text-yellow-400">★★★★☆</span>
+              <span class="text-gray-600 ml-2">(4.5/5)</span>
+            </div>
+            <p class="text-lg mb-4">A detailed book on the life of the Prophet Muhammad ﷺ.</p>
+            <div class="space-y-3 mb-6">
+              <p><strong>Level:</strong> Intermediate</p>
+              <h3 class="text-xl font-bold">Want to listen?</h3>
+              <p>If you want to hear the story, just click below — hear now 👇</p>
+            </div>
+            <a class="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700 inline-block"
+               href="https://www.audible.com/" target="_blank" rel="noopener" role="button">Hear now</a>
+            <a href="#books" class="ml-4 text-blue-600 hover:underline" onclick="hideBookDetail('sealed-nectar')">Go back to books</a>
+          </div>
+        </div>
+        <div class="p-6 border-t">
+          <h3 class="text-xl font-bold mb-3">Book Details</h3>
+          <h4 class="text-lg font-semibold">By Safi-ur-Rahman al-Mubarakpuri</h4>
+          <p class="text-gray-700 mt-3">
+            <strong>The Sealed Nectar</strong> is one of the most acclaimed and authentic biographies of the Prophet Muhammad ﷺ. It covers his life, mission, struggles, and timeless lessons that continue to inspire millions.
+          </p>
+          <h5 class="font-semibold mt-4">Introduction</h5>
+          <p class="text-gray-700">The book opens with Arabia’s pre-Islamic background, describing its social, political, and religious conditions, and why the Prophet’s mission was a turning point in history.</p>
+          <h5 class="font-semibold mt-4">Early Life</h5>
+          <p class="text-gray-700">It traces the Prophet’s ﷺ noble lineage, birth in Makkah, and early life as an orphan, highlighting the character that earned him the title <em>Al‑Ameen</em> (The Trustworthy).</p>
+          <h5 class="font-semibold mt-4">Revelation & Makkah</h5>
+          <p class="text-gray-700">From the first revelation in Hira to years of opposition in Makkah, the narrative shows steadfastness and the companions’ sacrifices.</p>
+          <h5 class="font-semibold mt-4">Hijrah & Madinah</h5>
+          <p class="text-gray-700">The Hijrah, state-building in Madinah, key battles, diplomacy like Hudaybiyyah, and the Conquest of Makkah are covered with balance and depth.</p>
+          <h5 class="font-semibold mt-4">Conclusion</h5>
+          <p class="text-gray-700">More than a biography, it is a guide to values of patience, mercy, justice, and devotion to God.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DETAILS: Muhammad: His Life Based on the Earliest Sources -->
+  <section id="muhammad-earliest-sources" class="hidden py-16">
+    <div class="container mx-auto px-4 max-w-4xl">
+      <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+        <div class="md:flex">
+          <div class="md:w-1/3 p-6">
+            <img src="https://m.media-amazon.com/images/I/51qVmuUMpGL._UF1000%2C1000_QL80_.jpg" alt="Muhammad: His Life Based on the Earliest Sources cover" class="w-full rounded-lg shadow-md" />
+          </div>
+          <div class="md:w-2/3 p-6">
+            <h2 class="text-3xl font-bold mb-4">Muhammad: His Life Based on the Earliest Sources</h2>
+            <div class="flex items-center mb-4" aria-label="Rating 4.8 out of 5">
+              <span class="text-yellow-400">★★★★★</span>
+              <span class="text-gray-600 ml-2">(4.8/5)</span>
+            </div>
+            <p class="text-lg mb-4">A captivating biography of Prophet Muhammad ﷺ based on the earliest authentic sources.</p>
+            <div class="space-y-3 mb-6">
+              <p><strong>Level:</strong> Advanced</p>
+              <h3 class="text-xl font-bold">Want to listen?</h3>
+              <p>If you want to hear the story, just click below — hear now 👇</p>
+            </div>
+            <a class="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700 inline-block"
+               href="https://www.audible.com/" target="_blank" rel="noopener" role="button">Hear now</a>
+            <a href="#books" class="ml-4 text-blue-600 hover:underline" onclick="hideBookDetail('muhammad-earliest-sources')">Go back to books</a>
+          </div>
+        </div>
+        <div class="p-6 border-t">
+          <h3 class="text-xl font-bold mb-3">Book Details</h3>
+          <h4 class="text-lg font-semibold">By Martin Lings</h4>
+          <p class="text-gray-700 mt-3">Widely praised for literary elegance and reliance on early sources, presenting the Prophet’s ﷺ life with historical accuracy and spiritual insight.</p>
+          <h5 class="font-semibold mt-4">Highlights</h5>
+          <ul class="list-disc list-inside text-gray-700 space-y-1">
+            <li>Pre‑Islamic Arabia background</li>
+            <li>Early life & character (<em>Al‑Ameen</em>)</li>
+            <li>First revelation; perseverance amid persecution</li>
+            <li>Isra & Mi‘raj, Hijrah, statecraft in Madinah</li>
+            <li>Conquest of Makkah; Farewell Sermon themes</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DETAILS: Saints and Heroes -->
+  <section id="saints-heroes" class="hidden py-16">
+    <div class="container mx-auto px-4 max-w-4xl">
+      <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+        <div class="md:flex">
+          <div class="md:w-1/3 p-6">
+            <img src="https://sophiainstitute.com/wp-content/uploads/2023/02/16757372646601-21041.jpeg" alt="Saints and Heroes book cover" class="w-full rounded-lg shadow-md" />
+          </div>
+          <div class="md:w-2/3 p-6">
+            <h2 class="text-3xl font-bold mb-4">Saints and Heroes</h2>
+            <div class="flex items-center mb-4" aria-label="Rating 4.6 out of 5">
+              <span class="text-yellow-400">★★★★☆</span>
+              <span class="text-gray-600 ml-2">(4.6/5)</span>
+            </div>
+            <p class="text-lg mb-4">Stories of great figures and their achievements.</p>
+            <div class="space-y-3 mb-6">
+              <p><strong>Level:</strong> Elementary</p>
+              <h3 class="text-xl font-bold">Want to listen?</h3>
+              <p>If you want to hear the story, just click below — hear now 👇</p>
+            </div>
+            <a class="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700 inline-block"
+               href="https://www.audible.com/" target="_blank" rel="noopener" role="button">Hear now</a>
+            <a href="#books" class="ml-4 text-blue-600 hover:underline" onclick="hideBookDetail('saints-heroes')">Go back to books</a>
+          </div>
+        </div>
+        <div class="p-6 border-t">
+          <h3 class="text-xl font-bold mb-3">Book Details</h3>
+          <p class="text-gray-700">An engaging anthology that invites readers—especially young adults—to discover courage, compassion, and faith through lives across centuries.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DETAILS: The Great Caliphs -->
+  <section id="great-caliphs" class="hidden py-16">
+    <div class="container mx-auto px-4 max-w-4xl">
+      <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+        <div class="md:flex">
+          <div class="md:w-1/3 p-6">
+            <img src="https://www.libertybooks.com/image/cache/catalog/9788178987767%201-626x974.jpg?q6" alt="The Great Caliphs book cover" class="w-full rounded-lg shadow-md" />
+          </div>
+          <div class="md:w-2/3 p-6">
+            <h2 class="text-3xl font-bold mb-4">The Great Caliphs</h2>
+            <div class="flex items-center mb-4" aria-label="Rating 4.7 out of 5">
+              <span class="text-yellow-400">★★★★☆</span>
+              <span class="text-gray-600 ml-2">(4.7/5)</span>
+            </div>
+            <p class="text-lg mb-4">Insights into the lives and governance of the early Caliphs.</p>
+            <div class="space-y-3 mb-6">
+              <p><strong>Level:</strong> Intermediate</p>
+              <h3 class="text-xl font-bold">Want to listen?</h3>
+              <p>If you want to hear the story, just click below — hear now 👇</p>
+            </div>
+            <a class="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700 inline-block"
+               href="https://www.audible.com/" target="_blank" rel="noopener" role="button">Hear now</a>
+            <a href="#books" class="ml-4 text-blue-600 hover:underline" onclick="hideBookDetail('great-caliphs')">Go back to books</a>
+          </div>
+        </div>
+        <div class="p-6 border-t">
+          <h3 class="text-xl font-bold mb-3">Book Details</h3>
+          <p class="text-gray-700">A balanced look at leadership, institutions, and the intellectual flowering of the Abbasid era within the wider Mediterranean world.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- FOOTER -->
   <footer class="bg-gradient-to-r from-teal-800 to-teal-600 text-white py-10 mt-16">
     <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
       <div>
         <h3 class="text-2xl font-bold mb-3">Book Studio</h3>
-        <p class="text-gray-200 mb-4">Your hub for Islamic books that inspire, educate, and guide. Explore the world of authentic knowledge.</p>
+        <p class="text-gray-200 mb-4">Your hub for books that inspire, educate, and entertain. Explore the world of knowledge with us.</p>
         <div class="flex space-x-4 text-lg">
           <a href="#" class="hover:text-yellow-300" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
           <a href="#" class="hover:text-yellow-300" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
@@ -112,15 +272,110 @@
           <a href="#" class="hover:text-yellow-300" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
         </div>
       </div>
-      <!-- other footer columns same -->
+
+      <div>
+        <h4 class="text-xl font-semibold mb-3">Important Links</h4>
+        <ul class="space-y-2">
+          <li><a href="index.html" class="hover:underline">Home</a></li>
+          <li><a href="about-us.html" class="hover:underline">About Us</a></li>
+          <li><a href="#books" class="hover:underline">Books</a></li>
+          <li><a href="contact-us.html" class="hover:underline">Contact</a></li>
+          <li><a href="privacy-policy.html" class="hover:underline">Privacy Policy</a></li>
+          <li><a href="audible-disclosure.html" class="hover:underline">Audible Disclosure</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="text-xl font-semibold mb-3">Latest Information</h4>
+        <p class="text-gray-200 mb-3">Subscribe to our newsletter for the latest updates.</p>
+        <form class="flex" onsubmit="event.preventDefault(); alert('Thanks for subscribing!');">
+          <label for="newsletter-email" class="sr-only">Email</label>
+          <input id="newsletter-email" type="email" placeholder="Enter your email"
+                 class="p-2 rounded-l-lg w-full text-gray-900 focus:outline-none" required />
+          <button class="bg-yellow-400 hover:bg-yellow-500 text-gray-900 px-4 rounded-r-lg">
+            Subscribe
+          </button>
+        </form>
+      </div>
     </div>
+
     <div class="border-t border-gray-400 mt-8 pt-4 text-center text-sm text-gray-200">
       <p>&copy; <span id="year"></span> Book Studio. All Rights Reserved.</p>
     </div>
   </footer>
 
-  <!-- SCRIPTS (same as your file) -->
+  <!-- SCRIPTS -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <!-- ... keep your existing script code ... -->
+  <script>
+    // --- Supabase (keep your anon key safe; rotate if public) ---
+    const SUPABASE_URL = "https://hxsqzscxtcdmstilbnzm.supabase.co";
+    const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh4c3F6c2N4dGNkbXN0aWxibnptIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTU0MTQxNTgsImV4cCI6MjA3MDk5MDE1OH0.QTMdxozUFDA_5gUau3w06YgSpZwRe9fGYo2Ale-jmts";
+    const sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+    // UI state from localStorage
+    const storedEmail = localStorage.getItem("userEmail");
+    const welcomeText = document.getElementById("welcomeText");
+    const loginBtn = document.getElementById("loginBtn");
+    const registerBtn = document.getElementById("registerBtn");
+    const logoutBtn = document.getElementById("logoutBtn");
+
+    function setAuthUI(email) {
+      if (email) {
+        welcomeText.textContent = "Welcome, " + email;
+        loginBtn?.classList.add("hidden");
+        registerBtn?.classList.add("hidden");
+        logoutBtn?.classList.remove("hidden");
+      } else {
+        welcomeText.textContent = "";
+        loginBtn?.classList.remove("hidden");
+        registerBtn?.classList.remove("hidden");
+        logoutBtn?.classList.add("hidden");
+      }
+    }
+    setAuthUI(storedEmail);
+
+    async function logoutUser() {
+      try {
+        await sb.auth.signOut();
+      } catch (e) {
+        console.warn("Sign-out error", e);
+      }
+      localStorage.removeItem("userEmail");
+      setAuthUI(null);
+      window.location.href = "login.html";
+    }
+    document.getElementById("logoutBtn").addEventListener("click", logoutUser);
+
+    // Mobile menu toggle
+    const menuBtn = document.getElementById("menu-btn");
+    const menu = document.getElementById("menu");
+    menuBtn.addEventListener("click", () => {
+      const isHidden = menu.classList.toggle("hidden");
+      menuBtn.setAttribute("aria-expanded", String(!isHidden));
+    });
+
+    // Year auto-update
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Show/Hide book details
+    function showBookDetail(id) {
+      document.querySelectorAll("section[id]").forEach(el => {
+        if (el.id !== "books" && el.id !== id) el.classList.add("hidden");
+        if (el.id === "books") el.classList.add("hidden");
+      });
+      const target = document.getElementById(id);
+      if (target) {
+        target.classList.remove("hidden");
+        target.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+    function hideBookDetail(id) {
+      const target = document.getElementById(id);
+      if (target) target.classList.add("hidden");
+      const books = document.getElementById("books");
+      books.classList.remove("hidden");
+      books.scrollIntoView({ behavior: "smooth" });
+    }
+  </script>
 </body>
 </html>
